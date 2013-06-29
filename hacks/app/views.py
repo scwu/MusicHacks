@@ -20,3 +20,6 @@ import json
 
 def home(request):
     return render_to_response('index.html',RequestContext(request))
+
+def circle(request):
+    return render_to_response('circle.html', RequestContext(request))
