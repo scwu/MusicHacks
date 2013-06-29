@@ -15,6 +15,8 @@ from django.contrib.auth.models import *
 from django.core.context_processors import csrf
 from django.views.decorators.http import require_http_methods
 
+from .forms import UploadFileForm
+
 from datetime import datetime
 import hacks.urls
 import json
@@ -24,6 +26,16 @@ import soundcloud
 def home(request):
     return render_to_response('index.html',RequestContext(request))
 
+def add_song(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(Request.FILES['file'])
+            return HttpResponseRedirect('/class')
+    else:
+        form = UploadFileForm()
+
+    return render_to_response('add_song.html', {'form' : form})
 
 def circle(request):
     return render_to_response('circle.html', RequestContext(request))
