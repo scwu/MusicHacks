@@ -1,0 +1,35 @@
+@import url(http://fonts.googleapis.com/css?family=Cabin);
+
+* {
+	-webkit-font-smoothing: antialiased;`
+}
+
+html {
+	background-color:#000;
+}
+
+.header {
+	font-family:'Cabin';
+	font-weight:bold;
+	font-size:48px;
+	color:#fff;
+	text-align:center;
+}
+
+.wrapper {
+	width:960px;
+	margin:0 auto;
+	font-family:'Cabin';
+}
+
+.front {
+	z-index:2;
+	position:relative;
+}
+
+video {
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:0;
+}
