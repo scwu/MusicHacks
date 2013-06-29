@@ -15,6 +15,8 @@ from django.contrib.auth.models import *
 from django.core.context_processors import csrf
 from django.views.decorators.http import require_http_methods
 
+from .forms import UploadFileForm
+
 from datetime import datetime
 import hacks.urls
 import json
@@ -26,6 +28,13 @@ from app.models import Circle, Genre, Song
 def home(request):
     return render_to_response('index.html',RequestContext(request))
 
-@require_http_methods(["POST"])
-def action(request):
-    return HttpResponse("Success")
+def add_song(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            handle_uploaded_file(Request.FILES['file'])
+            return HttpResponseRedirect('/class')
+    else:
+        form = UploadFileForm()
+
+    return render_to_response('add_song.html', {'form' : form})
