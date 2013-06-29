@@ -13,10 +13,19 @@ from hacks.app.models import *
 from django.contrib.auth import *
 from django.contrib.auth.models import *
 from django.core.context_processors import csrf
+from django.views.decorators.http import require_http_methods
 
 from datetime import datetime
 import hacks.urls
 import json
 
+import soundcloud
+
+from app.models import Circle, Genre, Song
+
 def home(request):
     return render_to_response('index.html',RequestContext(request))
+
+@require_http_methods(["POST"])
+def action(request):
+    return HttpResponse("Success")

@@ -29,4 +29,3 @@ class Song(models.Model):
 
 class Comment(models.Model):
   song = models.ForeignKey(Song)
-
