@@ -64,28 +64,58 @@ def add_song(request, circle_id):
 @login_required
 def circle(request, circle_id):
     form = UploadFileForm()
-    model = Circle.objects.get(pk=circle_id)
     link = Circle.objects.get(pk=circle_id)
     songs = Song.objects.filter(circle=link).values()
+    insp = Inspiration.objects.filter(circle=link)
+    youtube = []
+    wiki = []
+    spotify = []
+    for i in insp:
+        if "youtube" in i:
+            iy = { "url" : url, "title" : title}
+            youtube.append(iy)
+        elif "wikipedia" in i:
+            wi = { "url" : url, "title" : title }
+            wiki.append(wi)
+        else:
+            si = { "url" : url, "title" : title }
+            spotify.append(si)
+
     return render_to_response(
         'circle.html',
         {'form': form,
-         'songs': songs},
+         'songs': songs,
+         'youtube' : youtube,
+         'wikipedia' : wiki,
+         'spotify' : spotify,
+         },
         context_instance=RequestContext(request))
 
 @login_required
 def create_circle(request):
-    class CircleForm(ModelForm):
-        class Meta:
-            model = Circle
-            fields = ['title', 'teacher', 'description', 'background_image']
     if request.method == 'POST':
-        form = CircleForm(request.POST)
-        circle = form.save()
-        return HttpResponseRedirect('/circle/%d' % (circle.id))
+        title = request.POST['title']
+        description = request.POST['description']
+        background_img = request.POST['background_image']
+        due_date = request.POST['due_date']
+        youtube = request.POST['youtube']
+        youtube_title = request.POST['youtube_title']
+        wikipedia = request.POST['wiki']
+        wiki_title = request.POST['wiki_title']
+        spotify = request.POST['spotify']
+        spotify_title = request.POST['spotify_title']
+        date_time = datetime.strptime(due_date, '%I:%M%p')
+        teacher = User.objects.get(username=request.user.username)
+        c = Circle(title=title, description=description,
+                   background_image = background_img,
+                   due_date=date_time, teacher=teacher)
+        c.save()
+        yt = Inspiration(circle=c, url=youtube, title=youtube_title)
+        wikit = Inspiration(circle=c, url=wikipedia, title=wiki_title)
+        st = Inspiration(circle=c, url=spotify, title=spotify_title)
+        return HttpResponseRedirect('/circle/%d' % (c.id))
     else:
-        form = CircleForm()
-    return render_to_response('create_circle.html',{'form': form})
+        return render_to_response('create_circle.html')
 
 def home(request):
     circles = Circle.objects.all().values()
@@ -94,7 +124,7 @@ def home(request):
 # temporary routes
 def jeremy(request):
     return render_to_response('circle.html', RequestContext(request))
-    
+
 def record(request):
     return render_to_response('record.html', RequestContext(request))
 

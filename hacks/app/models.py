@@ -14,6 +14,7 @@ class Circle(models.Model):
 class Inspiration(models.Model):
   url = models.URLField()
   circle = models.ForeignKey(Circle)
+  title = models.CharField(max_length=300)
 
 class Genre(models.Model):
   name = models.CharField(max_length=63)

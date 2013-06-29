@@ -50,22 +50,28 @@
 		</li>
 		<li>
 			<h1>Inspiration</h1>
-			<ul>	
-				<li>
-					<i class="icon-youtube icon-large"></i>
-					<a href="#">KISS - I Wanna Rock N Roll All Night (1996)
+            <ul>	
+                {% for y in youtube %}
+                <li>
+                    <i class="icon-youtube icon-large"></i>
+                    <a href="{{ y.url }}">{{ y.title }}
 					</a>
-				</li>
+                </li>
+                {% endfor %}
+                {% for w in wiki %}
 				<li>
-					<i class="icon-link icon-large"></i>
-					<a href="http://en.wikipedia.org/wiki/Kiss_(band)">Wikipedia 'KISS'
+                    <i class="icon-link icon-large"></i>
+                    <a href="{{ w.url }}">{{ w.title}}
 					</a>
-				</li>
+                </li>
+                {% endfor %}
+                {% for s in spotify %}
 				<li>
-					<i class="icon-play-sign icon-4"></i>
-					<a href="#">'Detroit Rock City' - Kiss (on spotify)
+                    <i class="icon-play-sign icon-4"></i>
+                    <a href="{{ s.url }}">{{ s.title }}
 					</a>
-				</li>
+                </li>
+                {% endfor %}
 			</ul>	
 		</li>
 	</ul>
@@ -100,9 +106,12 @@
 
 
     <div class="songs">
-    {% for s in songs %}
-        <iframe id="sc-widget" src="https://w.soundcloud.com/player/?url={{ s.url }}" width="60%" height="200" scrolling="no" frameborder="no"></iframe>
-    {% endfor %}
+        {% for s in songs %}
+            <div id="{{s.id}}">
+                <iframe id="sc-widget" src="https://w.soundcloud.com/player/?url={{ s.url }}" width="60%" height="200" scrolling="no" frameborder="no"></iframe>
+                <a >
+            </div>
+        {% endfor %}
 </div>
 
 

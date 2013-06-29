@@ -4,6 +4,16 @@
 
 <p>Create circle</p>
 <form action="/circle/create" method="post">{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Submit"/>
+    <input type="text" placeholder="title" name="title"/></br>
+    <input type="text" placeholder="description" name="description"/></br>
+    <input type="text" placeholder="background image url" name="background_image"/></br>
+    <input type="text" placeholder="due date" name="due_date"/></br>
+    <input type="text" placeholder="youtube link" name="youtube"/></br>
+    <input type="text" placeholder="youtube title" name="youtube_title"></br>
+    <input type="text" placeholder="wikipedia link" name="wiki"/></br>
+    <input type="text" name="wiki_title" placeholder="wikipedia title"></br>
+    <input type="text" name="spotify" placeholder="spotify"></br>
+    <input type="text" name="spotify_title" placeholder="spotify title"></br>
+    <input type="submit" value="Submit"/>
+</form>
 {% endblock content %}
