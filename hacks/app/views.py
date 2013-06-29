@@ -21,8 +21,6 @@ import json
 
 import soundcloud
 
-from app.models import Circle, Genre, Song
-
 def home(request):
     return render_to_response('index.html',RequestContext(request))
 
