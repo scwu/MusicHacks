@@ -110,10 +110,19 @@ border-top: 3px solid #F7585C;
 	}
 	#create{
 		width: 100%;
-		height: 175px;
+		height: 250px;
 		background-color: white;
-		padding: 30px;
+		padding: 0px;
 		text-align: center;
+
+		h1 {
+			font-family: 'Source Sans Pro', sans-serif;
+			@include adjust-font-size-to(48px);
+			font-weight: 300;
+			// @include text-shadow(rgba(black, .6) 1px 1px 3px);
+			color: #333;
+			padding: 10px 0px 20px;
+		}
 		.record {
 			padding-top: 6px;
 			margin: 0px auto;
@@ -143,6 +152,10 @@ border-top: 3px solid #F7585C;
 				@include adjust-font-size-to(44px);
 
 			}
+		}
+		.recording {
+			background-color: darken(#F7585C, 50%);
+			border: 1px solid darken(#F7585C, 60%);
 		}
 		.upload {
 			padding-top: 6px;
