@@ -14,7 +14,7 @@
 				</span>
 			</div>
 			<input type="text" placeholder="Search" class="search"/>
-			<button type="submit" class="create">Create Circle</button>
+			<a href="circle/create"><button type="submit" class="create">Create Circle</button></a>
 		</div>
 		<div style="width:100%;height:100%;">
 			<iframe class="video" width="100%" height="100%" src="http://www.youtube.com/embed/CzDFI0io8ic?rel=0&autoplay=1&controls=0&showinfo=0&loop=1" frameborder="0" allowfullscreen></iframe>
@@ -22,42 +22,12 @@
 	</div>
 	<div class="stream">
 		<div class="stream-header">Join an existing Circle</div>
-		<div class="room" style="background-image:url(http://www.toledofreepress.com/wp-content/uploads/2010/08/StarKiss.jpg);">
-			<div class="room-title">Ms. Smith's Bio Class</div>
+		{% for circle in circles %}
+		<div class="room" style="background-image:url({{ circle.background_image }});">
+			<div class="room-title">{{ circle.title }}</div>
 			<button class="join">Join Circle</button>
 		</div>
-		<div class="room" style="background-image:url(http://www.toledofreepress.com/wp-content/uploads/2010/08/StarKiss.jpg);">
-			<div class="room-title">Ms. Smith's Bio Class</div>
-			<button class="join">Join Circle</button>
-		</div>
-		<div class="room" style="background-image:url(http://www.toledofreepress.com/wp-content/uploads/2010/08/StarKiss.jpg);">
-			<div class="room-title">Ms. Smith's Bio Class</div>
-			<button class="join">Join Circle</button>
-		</div>
-		<div class="room" style="background-image:url(http://www.toledofreepress.com/wp-content/uploads/2010/08/StarKiss.jpg);">
-			<div class="room-title">Ms. Smith's Bio Class</div>
-			<button class="join">Join Circle</button>
-		</div>
-		<div class="room" style="background-image:url(http://www.toledofreepress.com/wp-content/uploads/2010/08/StarKiss.jpg);">
-			<div class="room-title">Ms. Smith's Bio Class</div>
-			<button class="join">Join Circle</button>
-		</div>
-		<div class="room" style="background-image:url(http://www.toledofreepress.com/wp-content/uploads/2010/08/StarKiss.jpg);">
-			<div class="room-title">Ms. Smith's Bio Class</div>
-			<button class="join">Join Circle</button>
-		</div>
-		<div class="room" style="background-image:url(http://www.toledofreepress.com/wp-content/uploads/2010/08/StarKiss.jpg);">
-			<div class="room-title">Ms. Smith's Bio Class</div>
-			<button class="join">Join Circle</button>
-		</div>
-		<div class="room" style="background-image:url(http://www.toledofreepress.com/wp-content/uploads/2010/08/StarKiss.jpg);">
-			<div class="room-title">Ms. Smith's Bio Class</div>
-			<button class="join">Join Circle</button>
-		</div>
-		<div class="room" style="background-image:url(http://www.toledofreepress.com/wp-content/uploads/2010/08/StarKiss.jpg);">
-			<div class="room-title">Ms. Smith's Bio Class</div>
-			<button class="join">Join Circle</button>
-		</div>
+		{% endfor %}
 	</div>
 </div>
 {% endblock content %}

@@ -79,15 +79,15 @@ def create_circle(request):
             fields = ['users', 'title', 'teacher']
     if request.method == 'POST':
         form = CircleForm(request.POST)
-        circle.save()
+        circle = form.save()
         return HttpResponseRedirect('/circle/%d' % (circle.id))
     else:
         form = CircleForm()
     return render_to_response('create_circle.html',{'form': form})
 
 def home(request):
-    return render_to_response('index.html', RequestContext(request))
-
+    circles = Circle.objects.all().values()
+    return render_to_response('index.html', {'circles':circles}, RequestContext(request))
 
 @require_http_methods(["POST"])
 def action(request):
