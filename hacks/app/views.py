@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
@@ -15,6 +15,8 @@ from django.contrib.auth.models import *
 from django.core.context_processors import csrf
 from django.views.decorators.http import require_http_methods
 
+from django.forms import ModelForm
+
 from .forms import UploadFileForm
 
 from datetime import datetime
@@ -23,22 +25,50 @@ import json
 
 import soundcloud
 
-def home(request):
-    return render_to_response('index.html',RequestContext(request))
 
-def add_song(request):
+@login_required
+def add_song(request, circle_id):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_uploaded_file(Request.FILES['file'])
+            file = request.FILES['file']
+            client = soundcloud.Client(
+                access_token=request.session['access_token'])
+            track = client.post('/tracks', track={
+                'title': form.cleaned_data['title'],
+                'asset_data': file
+            })
+            print track.permalink_url
             return HttpResponseRedirect('/class')
+    return HttpResponseNotFound('No page')
+
+def circle(request, circle_id):
+    form = UploadFileForm()
+    model = Circle.objects.get(pk=circle_id)
+
+    return render_to_response(
+        'add_song.html',
+        {'form': form,
+         'model': model},
+        context_instance=RequestContext(request))
+
+@login_required
+def create_circle(request):
+    class CircleForm(ModelForm):
+        class Meta:
+            model = Circle
+            fields = ['users', 'title', 'teacher']
+    if request.method == 'POST':
+        form = CircleForm(request.POST)
+        circle.save()
+        return HttpResponseRedirect('/circle/%d' % (circle.id))
     else:
-        form = UploadFileForm()
+        form = CircleForm()
+    return render_to_response('create_circle.html')
 
-    return render_to_response('add_song.html', {'form' : form})
-
-def circle(request):
+def home(request):
     return render_to_response('circle.html', RequestContext(request))
+
 
 @require_http_methods(["POST"])
 def action(request):
