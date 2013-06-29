@@ -27,7 +27,7 @@
 		{% for circle in circles %}
 		<div class="room" style="background-image:url({{ circle.background_image }});">
 			<div class="room-title">{{ circle.title }}</div>
-			<a href='/circle/{{ circle.id }}'><button class="join">Join Circle</button></a>
+			<a href='/circle/{{ circle.id }}/join'><button class="join">Join Circle</button></a>
 		</div>
 		{% endfor %}
 	</div>
