@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<p>Create circle</p>
-<form action="circle/" method="post">{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Submit"/>
+<div class="create-circle">
+	<h5>jamcircle</h5>
+	<div class="container">
+		<h1>Create circle</h1>
+		<form action="/circle/create" method="post">{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Submit"/>
+		</div>
+	</div>
 {% endblock content %}
