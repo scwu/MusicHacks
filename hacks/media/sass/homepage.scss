@@ -1,3 +1,7 @@
+html {
+	background-color:#D6D6D6
+}
+
 #homepage {
 @import "compass/typography/vertical_rhythm";
 
@@ -18,6 +22,7 @@
 
 		h1 {
 			font-family:'Cabin Condensed';
+			font-weight:bold;
 		}
 
 		p {
@@ -29,7 +34,7 @@
 		u {
 			text-decoration: none;
 			font-size: 41px;
-			font-weight: 800;
+			font-weight: bold;
 		}
 	}
 
@@ -51,21 +56,24 @@
 
 	.video {
 		position:absolute;
-		left:-25%;
 		top:0;
 		bottom:0;
+		right:0;
+		left:0;
 		z-index:0;
-		width:150%;
+		border-bottom:4px solid #444;
 	}
 
 	.search {
 		position: absolute;
 		right: 20px;
 		bottom: 20px;
-		width:240px;
+		width:320px;
 		border-radius:20px;
+		border-radius:0px;
 		padding:10px;
 		border:0px;
+		height:40px;
 	}
 
 	.create {
@@ -80,9 +88,71 @@
 		font-size:36px;
 		background-color:#F7585C;
 		border-radius:5px;
+		border-radius:0px;
 		border:none;
 		color:#fff;
 	}
 
+	.create:hover {
+		opacity:.75;
+		cursor:pointer;
+	}
+
+	.search:focus, .search:active {
+	    outline: none !important;
+	}
+
+	.stream {
+		width:960px;
+		margin:0 auto;
+	}
+
+	.room {
+		font-family:'Source Sans Pro';
+		font-weight:bold;
+		width:460px;
+		margin:10px;
+		float:left;
+		font-size:36px;
+		position:relative;
+		height:320px;
+		background-size:cover;
+		background-position:center center;
+		color:#fff;
+		border-top:5px solid #F8D734;
+	}
+
+	.room-title {
+		font-family:'Cabin';
+		font-weight:bold;
+		padding:12px;
+		background-color:rgba(0,0,0,.6);
+	}
+
+	.join {
+		float:right;
+		background-color:#F7585C;
+		border:none;
+		color:#fff;
+		font-family:'Cabin';
+		padding:10px 20px;
+		font-size:24px;
+		cursor:pointer;
+		position:absolute;
+		bottom:20px;
+		right:20px;
+	}
+
+	.join:hover {
+		opacity:.75;
+	}
+
+	.stream-header {
+		font-size:28px;
+		font-family:'source sans pro';
+		font-weight:bold;
+		padding:10px;
+		margin-top:40px;
+	}
 
 }

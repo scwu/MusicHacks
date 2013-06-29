@@ -3,12 +3,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-#class UserProfile(models.Model):
-  #user = models.OneToOneField(User)
-
-  #def __str__(self):
-    #return "%s's profile" % self.user
-
 class Circle(models.Model):
   users = models.ManyToManyField(User, related_name='circle_users')
   title = models.CharField(max_length=63)
@@ -17,6 +11,9 @@ class Circle(models.Model):
 class Genre(models.Model):
   name = models.CharField(max_length=63)
   image = models.URLField()
+
+  def __unicode__(self):
+    return self.name
 
 class Song(models.Model):
   time = models.TimeField(auto_now_add=True)

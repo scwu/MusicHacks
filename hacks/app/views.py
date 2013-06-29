@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
@@ -15,31 +15,108 @@ from django.contrib.auth.models import *
 from django.core.context_processors import csrf
 from django.views.decorators.http import require_http_methods
 
+from django.forms import ModelForm
+
 from .forms import UploadFileForm
 
 from datetime import datetime
 import hacks.urls
 import json
-
+import os
 import soundcloud
+from hacks.settings import MEDIA_ROOT
 
-def home(request):
-    return render_to_response('index.html',RequestContext(request))
 
-def add_song(request):
+
+@login_required
+def add_song(request, circle_id):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_uploaded_file(Request.FILES['file'])
+            file = request.FILES['file']
+            client = soundcloud.Client(
+                access_token=request.session.get('access_token'))
+            def on_save():
+                c = get_object_or_404(Circle, circle_id)
+                song = Song.objects.create (
+                    user=request.user,
+                    title=request.title,
+                    description=request.description,
+                    circle=c,
+                    genre=request.genre)
+                song.save()
+            ext = os.path.splitext(file.name)[1]
+            destination = open('%s/tmp%s'%(MEDIA_ROOT, ext), 'wb+')
+            for chunk in file.chunks():
+                destination.write(chunk)
+            destination.close()
+            track = client.post('/tracks', on_save, track={
+                'title': form.cleaned_data['title'],
+                'asset_data': open('%s/tmp%s'%(MEDIA_ROOT, ext), 'rb+')
+            })
+            print track.permalink_url
             return HttpResponseRedirect('/class')
+    return HttpResponseNotFound('No page')
+
+
+@login_required
+def circle(request, circle_id):
+    form = UploadFileForm()
+    model = Circle.objects.get(pk=circle_id)
+
+    return render_to_response(
+        'add_song.html',
+        {'form': form,
+         'model': model},
+        context_instance=RequestContext(request))
+
+@login_required
+def create_circle(request):
+    class CircleForm(ModelForm):
+        class Meta:
+            model = Circle
+            fields = ['users', 'title', 'teacher']
+    if request.method == 'POST':
+        form = CircleForm(request.POST)
+        circle.save()
+        return HttpResponseRedirect('/circle/%d' % (circle.id))
     else:
-        form = UploadFileForm()
+        form = CircleForm()
+    return render_to_response('create_circle.html')
 
-    return render_to_response('add_song.html', {'form' : form})
+def home(request):
+    return render_to_response('index.html', RequestContext(request))
 
-def circle(request):
-    return render_to_response('circle.html', RequestContext(request))
 
 @require_http_methods(["POST"])
 def action(request):
     return HttpResponse("Success")
+
+def login(request):
+    client = soundcloud.Client(client_id='0a12c93543fbf8de3cba545b5c16bd64',
+                             client_secret='5dcac4b7f8d57485150f829a25104028',
+                             redirect_uri='http://127.0.0.1:8000/redirect/')
+    return redirect(client.authorize_url())
+
+def private(request):
+    client = soundcloud.Client(client_id='0a12c93543fbf8de3cba545b5c16bd64',
+                            client_secret='5dcac4b7f8d57485150f829a25104028',
+                            redirect_uri='http://127.0.0.1:8000/redirect/')
+    code = request.GET['code']
+    access_token = client.exchange_token(code)
+    #client_user = soundcloud.Client(access_token=access_token)
+    print "got here"
+    current_user = client.get('/me')
+    request.session['access_token'] = access_token
+    if User.objects.filter(username=current_user.username):
+        user = User.objects.get(username=current_user.username)
+        user_auth = auth.authenticate(username=user.username, password='pwd')
+        auth.login(request, user_auth)
+    else:
+        user = User(username=current_user.username)
+        user.set_password('pwd')
+        user.save()
+        user_auth = auth.authenticate(username=user.username, password='pwd')
+        auth.login(request, user_auth)
+    return HttpResponseRedirect('/')
+
