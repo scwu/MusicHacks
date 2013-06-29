@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 {% block extra_head %}
+<script type="text/javascript" src="/media/js/circle-recorder.js"></script>
+<script type="text/javascript" src="/media/js/circle.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -43,7 +45,7 @@
 		</li>
 	</ul>
 	<div id="create">
-			<div class="record">
+			<div class="record" id="record-button">
 					<i class="icon-microphone"></i>
 					<span>record</span>
 			</div>
@@ -52,5 +54,18 @@
 					<span>upload</span>
 			</div>
 	</div>
+
+
+    <div id="wrapper">
+        <div>
+          <a href="javascript:record()"  id="record"                       >Record</a>
+          <a href="javascript:play()"    id="play"   >Play</a> 
+          <a href="javascript:stop()"    id="stop"   >Stop</a>
+          <a href="javascript:upload()"  id="upload" >Upload to SoundCloud</a>
+        </div>
+        
+        <span id="time">0:00</span>
+    </div>
+
 </div>
 {% endblock content %}
