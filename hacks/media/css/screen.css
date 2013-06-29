@@ -2027,8 +2027,7 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
 /* line 1, ../sass/circles.scss */
 #circles {
   border-top: 3px solid #F7585C;
-  margin: 0px auto;
-  max-width: 960px; }
+  margin: 0px auto; }
   /* line 61, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
   #circles * html {
     font-size: 100%; }
@@ -2036,7 +2035,7 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
   #circles html {
     font-size: 16px;
     line-height: 1.5em; }
-  /* line 8, ../sass/circles.scss */
+  /* line 7, ../sass/circles.scss */
   #circles #header {
     position: relative;
     text-align: center;
@@ -2046,7 +2045,7 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
     -o-background-size: cover;
     background-size: cover;
     height: 300px; }
-    /* line 14, ../sass/circles.scss */
+    /* line 13, ../sass/circles.scss */
     #circles #header #header-text {
       text-shadow: rgba(0, 0, 0, 0.2) 1px 1px 0;
       padding: 20px;
@@ -2056,7 +2055,7 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
       background-image: -o-linear-gradient(#000000, rgba(0, 0, 0, 0));
       background-image: linear-gradient(#000000, rgba(0, 0, 0, 0));
       height: 125px; }
-      /* line 19, ../sass/circles.scss */
+      /* line 18, ../sass/circles.scss */
       #circles #header #header-text h5 {
         float: right;
         font-family: 'Cabin Condensed', sans-serif;
@@ -2064,15 +2063,15 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
         font-size: 2.25em;
         line-height: 1.33333em;
         color: white; }
-    /* line 27, ../sass/circles.scss */
+    /* line 26, ../sass/circles.scss */
     #circles #header #header-title {
       color: white;
       text-align: left;
       position: absolute;
       width: 100%;
-      bottom: 20px;
+      bottom: 0px;
       padding-left: 20px; }
-      /* line 34, ../sass/circles.scss */
+      /* line 33, ../sass/circles.scss */
       #circles #header #header-title h1 {
         font-family: 'Cabin', sans-serif;
         font-size: 3em;
@@ -2080,7 +2079,7 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
         font-weight: 800;
         text-shadow: rgba(0, 0, 0, 0.6) 1px 1px 3px;
         float: left; }
-      /* line 41, ../sass/circles.scss */
+      /* line 40, ../sass/circles.scss */
       #circles #header #header-title h2 {
         position: relative;
         font-family: 'Source Sans Pro', sans-serif;
@@ -2098,7 +2097,7 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
         -webkit-border-radius: 4px;
         -moz-border-radius: 4px;
         border-radius: 4px; }
-        /* line 53, ../sass/circles.scss */
+        /* line 52, ../sass/circles.scss */
         #circles #header #header-title h2 .line {
           z-index: 20;
           top: 23px;
@@ -2107,36 +2106,44 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
           width: 100%;
           background-color: grey;
           border-bottom: 1px solid #D6D6D6; }
-  /* line 66, ../sass/circles.scss */
+      /* line 62, ../sass/circles.scss */
+      #circles #header #header-title h3 {
+        font-size: 1.5em;
+        line-height: 2em;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 600;
+        text-shadow: rgba(0, 0, 0, 0.2) 1px 1px 0;
+        clear: both;
+        line-height: 1.5em;
+        margin-bottom: 10px; }
+  /* line 76, ../sass/circles.scss */
   #circles #introduction > li {
+    margin: 2% 5%;
     font-family: 'Source Sans Pro', sans-serif;
-    width: 50%;
+    width: 40%;
     float: left;
-    border-style: solid;
-    border-width: 1.07143em;
-    padding: -0.72857em;
-    border-color: white; }
-    /* line 72, ../sass/circles.scss */
+    padding: 2%; }
+    /* line 82, ../sass/circles.scss */
     #circles #introduction > li h1 {
       font-size: 3em;
       line-height: 1.5em;
-      padding-top: 0.75em;
+      padding-bottom: 0.3em;
       color: #333;
       font-weight: 300; }
-    /* line 78, ../sass/circles.scss */
+    /* line 88, ../sass/circles.scss */
     #circles #introduction > li p {
       color: #333;
       font-size: 1.125em;
       line-height: 1.33333em; }
-    /* line 82, ../sass/circles.scss */
+    /* line 92, ../sass/circles.scss */
     #circles #introduction > li i {
       padding-right: 10px; }
-    /* line 85, ../sass/circles.scss */
-    #circles #introduction > li li:first-child, #circles #introduction > li p {
-      padding-top: 0.75em; }
-    /* line 88, ../sass/circles.scss */
+    /* line 99, ../sass/circles.scss */
     #circles #introduction > li li {
       margin-bottom: 15px; }
+      /* line 101, ../sass/circles.scss */
+      #circles #introduction > li li:last-child {
+        margin-bottom: none; }
 
 /* line 9, ../sass/screen.scss */
 * {

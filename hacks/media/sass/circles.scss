@@ -3,7 +3,6 @@ border-top: 3px solid #F7585C;
 @import "compass/typography/vertical_rhythm";
 @include establish-baseline;
 	margin: 0px auto;
-	max-width: 960px;
 
 	#header {
 		position: relative;
@@ -29,7 +28,7 @@ border-top: 3px solid #F7585C;
 			text-align: left;
 			position: absolute;
 			width: 100%;
-			bottom: 20px;
+			bottom: 0px;
 			padding-left: 20px;
 			h1 {
 				font-family: 'Cabin', sans-serif;
@@ -60,18 +59,29 @@ border-top: 3px solid #F7585C;
 					border-bottom: 1px solid #D6D6D6;
 				}
 			}
+			h3 {
+				@include adjust-font-size-to(24px);
+				font-family: 'Source Sans Pro', sans-serif;
+				font-weight: 600;
+				@include text-shadow(rgba(black, 0.2) 1px 1px 0);
+				clear: both;
+				line-height: 1.5em;
+				margin-bottom: 10px;
+			}
   		}
 	}
 	#introduction {
+		> li:first-child {
+		}
 		> li {
+			margin: 2% 5%;
 			font-family: 'Source Sans Pro', sans-serif;
-			width: 50%; 
+			width: 40%; 
 			float: left;
-			@include rhythm-borders(15px, .2, 14px);
-			border-color: white;
+			padding: 2%;
 			h1 {
 				@include adjust-font-size-to(48px);
-				@include padding-leader(.5);
+				@include padding-trailer(.2);
 				color: #333;
 				font-weight: 300;
 			}
@@ -82,11 +92,13 @@ border-top: 3px solid #F7585C;
 			i {
 				padding-right: 10px;
 			}
-			li:first-child, p {
-				@include padding-leader(.5);
+			li:first-child {
+				p {
+				}
 			}
 			li {
 				margin-bottom: 15px;
+				&:last-child { margin-bottom: none; }
 			}
 		}
 	}
