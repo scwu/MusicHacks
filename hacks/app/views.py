@@ -23,8 +23,6 @@ import json
 
 import soundcloud
 
-from app.models import Circle, Genre, Song
-
 def home(request):
     return render_to_response('index.html',RequestContext(request))
 
@@ -38,3 +36,10 @@ def add_song(request):
         form = UploadFileForm()
 
     return render_to_response('add_song.html', {'form' : form})
+
+def circle(request):
+    return render_to_response('circle.html', RequestContext(request))
+
+@require_http_methods(["POST"])
+def action(request):
+    return HttpResponse("Success")

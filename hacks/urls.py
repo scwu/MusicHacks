@@ -7,6 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'hacks.app.views.home'),
+    url(r'^circle/', 'hacks.app.views.circle'),
     url(r'media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'songs/add', 'hacks.app.views.add_song'),
     # Examples:
