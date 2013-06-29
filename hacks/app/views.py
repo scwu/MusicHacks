@@ -83,7 +83,7 @@ def create_circle(request):
         return HttpResponseRedirect('/circle/%d' % (circle.id))
     else:
         form = CircleForm()
-    return render_to_response('create_circle.html')
+    return render_to_response('create_circle.html',{'form': form})
 
 def home(request):
     return render_to_response('index.html', RequestContext(request))
