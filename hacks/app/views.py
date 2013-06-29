@@ -75,9 +75,10 @@ def circle(request, circle_id):
 @login_required
 def create_circle(request):
     class CircleForm(ModelForm):
+        start_datetime = ['due_date']
         class Meta:
             model = Circle
-            fields = ['title', 'teacher', 'description', 'background_image']
+            fields = ['title', 'teacher', 'due_date', 'description', 'background_image']
     if request.method == 'POST':
         form = CircleForm(request.POST)
         circle = form.save()
