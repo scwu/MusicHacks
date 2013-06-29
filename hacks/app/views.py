@@ -42,10 +42,12 @@ def add_song(request, circle_id):
             for chunk in file.chunks():
                 destination.write(chunk)
             destination.close()
-            track = client.post('/tracks', track={
+            t = open(desc, 'rb')
+            track = {
                 'title': form.cleaned_data['title'],
-                'asset_data': open(desc, 'rb')
-            })
+                'asset_data': t
+            }
+            track = client.post('/tracks', track=track)
             c = get_object_or_404(Circle, pk=circle_id)
             song = Song.objects.create (
                 user=request.user,
@@ -55,7 +57,6 @@ def add_song(request, circle_id):
                 circle=c,
                 genre=form.cleaned_data['genre'])
             song.save()
-            print track.permalink_url
             return HttpResponseRedirect('/class')
     return HttpResponseNotFound('No page')
 
@@ -76,17 +77,18 @@ def create_circle(request):
     class CircleForm(ModelForm):
         class Meta:
             model = Circle
-            fields = ['users', 'title', 'teacher']
+            fields = ['title', 'teacher', 'description', 'background_image']
     if request.method == 'POST':
         form = CircleForm(request.POST)
-        circle.save()
+        circle = form.save()
         return HttpResponseRedirect('/circle/%d' % (circle.id))
     else:
         form = CircleForm()
     return render_to_response('create_circle.html',{'form': form})
 
 def home(request):
-    return render_to_response('index.html', RequestContext(request))
+    circles = Circle.objects.all().values()
+    return render_to_response('index.html', {'circles':circles}, RequestContext(request))
 
 # temporary routes
 def jeremy(request):

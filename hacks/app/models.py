@@ -7,6 +7,13 @@ class Circle(models.Model):
   users = models.ManyToManyField(User, related_name='circle_users')
   title = models.CharField(max_length=63)
   teacher = models.ForeignKey(User, related_name='circle_teacher')
+  description = models.TextField()
+  due_date = models.TimeField()
+  background_image = models.URLField()
+
+class Inspiration(models.Model):
+  url = models.URLField()
+  circle = models.ForeignKey(Circle)
 
 class Genre(models.Model):
   name = models.CharField(max_length=63)
