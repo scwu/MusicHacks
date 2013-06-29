@@ -54,7 +54,7 @@
 		</li>
 		<li>
 			<h1>Inspiration</h1>
-            <ul>	
+            <ul>
                 {% for y in youtube %}
                 <li>
                     <i class="icon-youtube icon-large"></i>
@@ -99,19 +99,15 @@
 <input type="submit" value="Submit"/>
 </form>
 
+</div>
 
 
     <div class="songs">
         {% for s in songs %}
-            <div id="{{s.id}}">
                 <iframe id="sc-widget" src="https://w.soundcloud.com/player/?url={{ s.url }}" width="60%" height="200" scrolling="no" frameborder="no"></iframe>
-                <a >
-            </div>
         {% endfor %}
 </div>
 
-
-</div>
 
 <script type="text/javascript" src="/media/js/circle-record.js"></script>
 {% endblock content %}

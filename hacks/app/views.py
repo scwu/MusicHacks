@@ -66,19 +66,19 @@ def circle(request, circle_id):
     form = UploadFileForm()
     link = Circle.objects.get(pk=circle_id)
     songs = Song.objects.filter(circle=link).values()
-    insp = Inspiration.objects.filter(circle=link)
+    insp =  Inspiration.objects.filter(circle=link)
     youtube = []
     wiki = []
     spotify = []
     for i in insp:
-        if "youtube" in i:
-            iy = { "url" : url, "title" : title}
+        if "youtube" in i.url:
+            iy = { "url" : i.url, "title" : i.title}
             youtube.append(iy)
-        elif "wikipedia" in i:
-            wi = { "url" : url, "title" : title }
+        elif "wikipedia" in i.url:
+            wi = { "url" : i.url, "title" : i.title }
             wiki.append(wi)
         else:
-            si = { "url" : url, "title" : title }
+            si = { "url" : i.url, "title" : i.title }
             spotify.append(si)
 
     return render_to_response(
@@ -111,8 +111,11 @@ def create_circle(request):
                    due_date=date_time, teacher=teacher)
         c.save()
         yt = Inspiration(circle=c, url=youtube, title=youtube_title)
+        yt.save()
         wikit = Inspiration(circle=c, url=wikipedia, title=wiki_title)
+        wikit.save()
         st = Inspiration(circle=c, url=spotify, title=spotify_title)
+        st.save()
         return HttpResponseRedirect('/circle/%d' % (c.id))
     else:
         return render_to_response('create_circle.html')
@@ -134,8 +137,7 @@ def join_circle(request, circle_id):
     user = User.objects.get(username=request.user.username)
     c.users.add(user)
     c.save()
-    return HttpResponseRedirect('/circle/%d' % (circle.id))
-
+    return HttpResponseRedirect('/circle/%d' % (c.id))
 
 @require_http_methods(["POST"])
 def action(request):
