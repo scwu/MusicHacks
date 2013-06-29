@@ -56,7 +56,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 3, ../sass/homepage.scss */
 #homepage .header {
-  font-family: 'Cabin Condensed';
   font-weight: 700;
   font-size: 124px;
   color: #fff;
@@ -69,22 +68,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-left: -400px;
   margin-top: -100px;
   position: absolute; }
-/* line 23, ../sass/homepage.scss */
-#homepage .header p {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 600;
-  font-size: 36px; }
-/* line 28, ../sass/homepage.scss */
-#homepage .header u {
-  text-decoration: none;
-  font-size: 41px;
-  font-weight: 800; }
-/* line 34, ../sass/homepage.scss */
+  /* line 18, ../sass/homepage.scss */
+  #homepage .header h1 {
+    font-family: 'Cabin Condensed';
+    font-weight: bold; }
+  /* line 23, ../sass/homepage.scss */
+  #homepage .header p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 36px; }
+  /* line 29, ../sass/homepage.scss */
+  #homepage .header u {
+    text-decoration: none;
+    font-size: 41px;
+    font-weight: bold; }
+/* line 36, ../sass/homepage.scss */
 #homepage .wrapper {
   width: 960px;
   margin: 0 auto;
   font-family: 'Cabin'; }
-/* line 40, ../sass/homepage.scss */
+/* line 42, ../sass/homepage.scss */
 #homepage .front {
   z-index: 2;
   position: absolute;
@@ -92,15 +95,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   bottom: 0;
   height: 100%;
   width: 100%; }
-/* line 50, ../sass/homepage.scss */
+/* line 52, ../sass/homepage.scss */
 #homepage .video {
   position: absolute;
-  left: -25%;
   top: 0;
   bottom: 0;
-  z-index: 0;
-  width: 150%; }
-/* line 59, ../sass/homepage.scss */
+  right: 0;
+  left: 0;
+  z-index: 0; }
+/* line 61, ../sass/homepage.scss */
 #homepage .search {
   position: absolute;
   right: 20px;
@@ -109,7 +112,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   border-radius: 20px;
   padding: 10px;
   border: 0px; }
-/* line 69, ../sass/homepage.scss */
+/* line 71, ../sass/homepage.scss */
 #homepage .create {
   position: absolute;
   left: 20px;

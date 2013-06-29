@@ -17,6 +17,7 @@
 
 		h1 {
 			font-family:'Cabin Condensed';
+			font-weight:bold;
 		}
 
 		p {
@@ -28,7 +29,7 @@
 		u {
 			text-decoration: none;
 			font-size: 41px;
-			font-weight: 800;
+			font-weight: bold;
 		}
 	}
 
@@ -50,11 +51,11 @@
 
 	.video {
 		position:absolute;
-		left:-25%;
 		top:0;
 		bottom:0;
+		right:0;
+		left:0;
 		z-index:0;
-		width:150%;
 	}
 
 	.search {
