@@ -1,0 +1,1 @@
+$(document).ready(function(){people=["Justin Bieber","Jay-Z","Kanye West","Psy"];cur=0;count=people.length;interval=setInterval(function(){cur==count-1?cur=0:cur++;$(".bieber").fadeOut(function(){$(".bieber").text(people[cur]);$(".bieber").fadeIn()})},3e3);console.log("yo")});
