@@ -32,32 +32,30 @@ import urllib2
 def add_song(request, circle_id):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            file = request.FILES['file']
-            client = soundcloud.Client(
-                access_token=request.session.get('access_token'))
-            ext = os.path.splitext(file.name)[1]
-            desc = '%s/tmp%s'%(MEDIA_ROOT, ext)
-            destination = open(desc, 'wb')
-            for chunk in file.chunks():
-                destination.write(chunk)
-            destination.close()
-            t = open(desc, 'rb')
-            track = {
-                'title': form.cleaned_data['title'],
-                'asset_data': t
-            }
-            track = client.post('/tracks', track=track)
-            c = get_object_or_404(Circle, pk=circle_id)
-            song = Song.objects.create (
-                user=request.user,
-                title=form.cleaned_data['title'],
-                description=form.cleaned_data['description'],
-                url=track.uri,
-                circle=c,
-                genre=form.cleaned_data['genre'])
-            song.save()
-            return HttpResponseRedirect('/class')
+        file = request.FILES['file']
+        client = soundcloud.Client(
+            access_token=request.session.get('access_token'))
+        ext = os.path.splitext(file.name)[1]
+        desc = '%s/tmp%s'%(MEDIA_ROOT, ext)
+        destination = open(desc, 'wb')
+        for chunk in file.chunks():
+            destination.write(chunk)
+        destination.close()
+        t = open(desc, 'rb')
+        track = {
+            'title': 'Sample song',
+            'asset_data': t
+        }
+        track = client.post('/tracks', track=track)
+        c = get_object_or_404(Circle, pk=circle_id)
+        song = Song.objects.create (
+            user=request.user,
+            title='Sample song',
+            description='',
+            url=track.uri,
+            circle=c)
+        song.save()
+        return HttpResponseRedirect('/circle/%s' % circle_id)
     return HttpResponseNotFound('No page')
 
 
@@ -140,7 +138,7 @@ def join_circle(request, circle_id):
     user = User.objects.get(username=request.user.username)
     c.users.add(user)
     c.save()
-    return HttpResponseRedirect('/circle/%d' % (c.id))
+    return HttpResponseRedirect('/circle/%s' % (circle_id))
 
 @require_http_methods(["POST"])
 def action(request):
