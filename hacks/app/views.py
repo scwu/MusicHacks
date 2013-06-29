@@ -34,13 +34,23 @@ def add_song(request, circle_id):
             file = request.FILES['file']
             client = soundcloud.Client(
                 access_token=request.session['access_token'])
-            track = client.post('/tracks', track={
+            def on_save():
+                c = get_object_or_404(Circle, circle_id)
+                song = Song.objects.create (
+                    user=request.user,
+                    title=request.title,
+                    description=request.description,
+                    circle=c,
+                    genre=request.genre)
+                song.save()
+            track = client.post('/tracks', on_save, track={
                 'title': form.cleaned_data['title'],
                 'asset_data': file
             })
             print track.permalink_url
             return HttpResponseRedirect('/class')
     return HttpResponseNotFound('No page')
+
 
 def circle(request, circle_id):
     form = UploadFileForm()
