@@ -14,11 +14,22 @@ html {
 	font-size:48px;
 	color:#fff;
 	text-align:center;
-	background-color:#F7585C;
 }
 
 .wrapper {
 	width:960px;
 	margin:0 auto;
 	font-family:'Cabin';
+}
+
+.front {
+	z-index:2;
+	position:relative;
+}
+
+video {
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:0;
 }
