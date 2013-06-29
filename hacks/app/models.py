@@ -3,12 +3,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-#class UserProfile(models.Model):
-  #user = models.OneToOneField(User)
-
-  #def __str__(self):
-    #return "%s's profile" % self.user
-
 class Circle(models.Model):
   users = models.ManyToManyField(User, related_name='circle_users')
   title = models.CharField(max_length=63)

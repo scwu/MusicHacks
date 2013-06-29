@@ -22,8 +22,10 @@ from .forms import UploadFileForm
 from datetime import datetime
 import hacks.urls
 import json
-
+import os
 import soundcloud
+from hacks.settings import MEDIA_ROOT
+
 
 
 @login_required
@@ -33,7 +35,7 @@ def add_song(request, circle_id):
         if form.is_valid():
             file = request.FILES['file']
             client = soundcloud.Client(
-                access_token=request.session['access_token'])
+                access_token=request.session.get('access_token'))
             def on_save():
                 c = get_object_or_404(Circle, circle_id)
                 song = Song.objects.create (
@@ -43,15 +45,21 @@ def add_song(request, circle_id):
                     circle=c,
                     genre=request.genre)
                 song.save()
+            ext = os.path.splitext(file.name)[1]
+            destination = open('%s/tmp%s'%(MEDIA_ROOT, ext), 'wb+')
+            for chunk in file.chunks():
+                destination.write(chunk)
+            destination.close()
             track = client.post('/tracks', on_save, track={
                 'title': form.cleaned_data['title'],
-                'asset_data': file
+                'asset_data': open('%s/tmp%s'%(MEDIA_ROOT, ext), 'rb+')
             })
             print track.permalink_url
             return HttpResponseRedirect('/class')
     return HttpResponseNotFound('No page')
 
 
+@login_required
 def circle(request, circle_id):
     form = UploadFileForm()
     model = Circle.objects.get(pk=circle_id)
@@ -77,9 +85,38 @@ def create_circle(request):
     return render_to_response('create_circle.html')
 
 def home(request):
-    return render_to_response('circle.html', RequestContext(request))
+    return render_to_response('index.html', RequestContext(request))
 
 
 @require_http_methods(["POST"])
 def action(request):
     return HttpResponse("Success")
+
+def login(request):
+    client = soundcloud.Client(client_id='0a12c93543fbf8de3cba545b5c16bd64',
+                             client_secret='5dcac4b7f8d57485150f829a25104028',
+                             redirect_uri='http://127.0.0.1:8000/redirect/')
+    return redirect(client.authorize_url())
+
+def private(request):
+    client = soundcloud.Client(client_id='0a12c93543fbf8de3cba545b5c16bd64',
+                            client_secret='5dcac4b7f8d57485150f829a25104028',
+                            redirect_uri='http://127.0.0.1:8000/redirect/')
+    code = request.GET['code']
+    access_token = client.exchange_token(code)
+    #client_user = soundcloud.Client(access_token=access_token)
+    print "got here"
+    current_user = client.get('/me')
+    request.session['access_token'] = access_token
+    if User.objects.filter(username=current_user.username):
+        user = User.objects.get(username=current_user.username)
+        user_auth = auth.authenticate(username=user.username, password='pwd')
+        auth.login(request, user_auth)
+    else:
+        user = User(username=current_user.username)
+        user.set_password('pwd')
+        user.save()
+        user_auth = auth.authenticate(username=user.username, password='pwd')
+        auth.login(request, user_auth)
+    return HttpResponseRedirect('/')
+

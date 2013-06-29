@@ -7,8 +7,11 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'hacks.app.views.home'),
+    url(r'^login/', 'hacks.app.views.login'),
     url(r'media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-    url(r'^circle/$', 'hacks.app.views.create_circle'),
+    url(r'^circle/create$', 'hacks.app.views.create_circle'),
+    #url(r'^circle/$', 'hacks.app.views.circles'),
+    url(r'^redirect/', 'hacks.app.views.private'),
     url(r'^circle/(?P<circle_id>\d+)/song/$', 'hacks.app.views.add_song'),
     url(r'^circle/(?P<circle_id>\d+)/$', 'hacks.app.views.circle'),
     # Examples:
