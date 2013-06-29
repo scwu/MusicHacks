@@ -8,6 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'hacks.app.views.home'),
     url(r'^login/', 'hacks.app.views.login'),
+    url(r'^record/', 'hacks.app.views.record'),
     url(r'media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^circle/create$', 'hacks.app.views.create_circle'),
     #url(r'^circle/$', 'hacks.app.views.circles'),

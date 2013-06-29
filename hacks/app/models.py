@@ -23,6 +23,7 @@ class Song(models.Model):
   starred = models.ManyToManyField(User, related_name='song_starred')
   circle = models.ForeignKey(Circle)
   genre = models.ForeignKey(Genre)
+  url = models.URLField()
 
 class Comment(models.Model):
   song = models.ForeignKey(Song)
