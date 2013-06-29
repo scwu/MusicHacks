@@ -1,0 +1,72 @@
+/* line 4, ../sass/homepage.scss */
+#homepage .header {
+  font-weight: 700;
+  font-size: 124px;
+  color: #fff;
+  text-align: center;
+  height: 200px;
+  width: 800px;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  margin-left: -400px;
+  margin-top: -100px;
+  position: absolute; }
+  /* line 19, ../sass/homepage.scss */
+  #homepage .header h1 {
+    font-family: 'Cabin Condensed'; }
+  /* line 23, ../sass/homepage.scss */
+  #homepage .header p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 36px; }
+  /* line 29, ../sass/homepage.scss */
+  #homepage .header u {
+    text-decoration: none;
+    font-size: 41px;
+    font-weight: 800; }
+/* line 36, ../sass/homepage.scss */
+#homepage .wrapper {
+  width: 960px;
+  margin: 0 auto;
+  font-family: 'Cabin'; }
+/* line 42, ../sass/homepage.scss */
+#homepage .front {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%; }
+/* line 52, ../sass/homepage.scss */
+#homepage .video {
+  position: absolute;
+  left: -25%;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 150%; }
+/* line 61, ../sass/homepage.scss */
+#homepage .search {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 240px;
+  border-radius: 20px;
+  padding: 10px;
+  border: 0px; }
+/* line 71, ../sass/homepage.scss */
+#homepage .create {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  width: 320px;
+  padding: 15px 20px;
+  text-align: center;
+  font-family: 'Cabin';
+  font-weight: 700;
+  font-size: 36px;
+  background-color: #F7585C;
+  border-radius: 5px;
+  border: none;
+  color: #fff; }

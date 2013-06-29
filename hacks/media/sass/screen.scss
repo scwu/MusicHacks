@@ -1,8 +1,23 @@
-
 @import "compass/css3";
+@import "compass/css3/text-shadow";
 @import "compass/reset";
+@import "cf";
+@import "font-awesome/font-awesome";
 @import "homepage";
+@import "circles";
 
-* { @include box-sizing(border-box); }
+* { 
+	@include box-sizing(border-box); 
+}
 
-html { -webkit-font-smoothing: antialiased; }
+html { 
+	-webkit-font-smoothing: antialiased; 
+}
+
+a, a:link {
+	color: #7897B3;
+	text-decoration: none;
+	&:hover {
+		border-bottom: 1px solid #7897B3;
+	}
+}
