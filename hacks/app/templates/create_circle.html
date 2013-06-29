@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="create-circle">
+	<h5>jamcircle</h5>
+	<div class="container">
 
-<p>Create circle</p>
-<form action="/circle/create" method="post">{% csrf_token %}
-    <input type="text" placeholder="title" name="title"/></br>
-    <input type="text" placeholder="description" name="description"/></br>
-    <input type="text" placeholder="background image url" name="background_image"/></br>
-    <input type="text" placeholder="due date" name="due_date"/></br>
-    <input type="text" placeholder="youtube link" name="youtube"/></br>
-    <input type="text" placeholder="youtube title" name="youtube_title"></br>
-    <input type="text" placeholder="wikipedia link" name="wiki"/></br>
-    <input type="text" name="wiki_title" placeholder="wikipedia title"></br>
-    <input type="text" name="spotify" placeholder="spotify"></br>
-    <input type="text" name="spotify_title" placeholder="spotify title"></br>
-    <input type="submit" value="Submit"/>
-</form>
+	<h1>Create circle</h1>
+	<form action="/circle/create" method="post">{% csrf_token %}
+	    <input type="text" placeholder="Title" name="title"/></br>
+	    <input type="text" placeholder="Description" name="description"/></br>
+	    <input type="text" placeholder="Background image url" name="background_image"/></br>
+	    <input type="text" placeholder="Due date" name="due_date"/></br>
+	    <input type="text" placeholder="Youtube link" name="youtube"/></br>
+	    <input type="text" placeholder="Youtube title" name="youtube_title"></br>
+	    <input type="text" placeholder="Wikipedia link" name="wiki"/></br>
+	    <input type="text" name="wiki_title" placeholder="Wikipedia title"></br>
+	    <input type="text" name="spotify" placeholder="Spotify"></br>
+	    <input type="text" name="spotify_title" placeholder="Spotify title"></br>
+	    <input type="submit" value="Submit"/>
+	</form>
+</div>
 {% endblock content %}
