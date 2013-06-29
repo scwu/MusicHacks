@@ -25,7 +25,7 @@ import json
 import os
 import soundcloud
 from hacks.settings import MEDIA_ROOT
-
+import urllib2
 
 
 @login_required
@@ -53,7 +53,7 @@ def add_song(request, circle_id):
                 user=request.user,
                 title=form.cleaned_data['title'],
                 description=form.cleaned_data['description'],
-                url=track.permalink_url,
+                url=track.uri,
                 circle=c,
                 genre=form.cleaned_data['genre'])
             song.save()
@@ -65,19 +65,21 @@ def add_song(request, circle_id):
 def circle(request, circle_id):
     form = UploadFileForm()
     model = Circle.objects.get(pk=circle_id)
-
+    link = Circle.objects.get(pk=circle_id)
+    songs = Song.objects.filter(circle=link).values()
     return render_to_response(
-        'add_song.html',
+        'circle.html',
         {'form': form,
-         'model': model},
+         'songs': songs},
         context_instance=RequestContext(request))
 
 @login_required
 def create_circle(request):
     class CircleForm(ModelForm):
+        start_datetime = ['due_date']
         class Meta:
             model = Circle
-            fields = ['title', 'teacher', 'description', 'background_image']
+            fields = ['title', 'teacher', 'due_date', 'description', 'background_image']
     if request.method == 'POST':
         form = CircleForm(request.POST)
         circle = form.save()
@@ -129,4 +131,3 @@ def private(request):
         user_auth = auth.authenticate(username=user.username, password='pwd')
         auth.login(request, user_auth)
     return HttpResponseRedirect('/')
-
