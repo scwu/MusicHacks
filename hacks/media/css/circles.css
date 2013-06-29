@@ -1,0 +1,146 @@
+/* line 6, ../sass/circles.scss */
+#circles {
+  border-top: 3px solid #F7585C;
+  margin: 0px auto; }
+  /* line 61, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+  #circles * html {
+    font-size: 100%; }
+  /* line 64, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+  #circles html {
+    font-size: 16px;
+    line-height: 1.5em; }
+  /* line 12, ../sass/circles.scss */
+  #circles #header {
+    position: relative;
+    text-align: center;
+    background-image: url("/media/img/kiss.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 300px; }
+    /* line 18, ../sass/circles.scss */
+    #circles #header #header-text {
+      text-shadow: rgba(0, 0, 0, 0.2) 1px 1px 0;
+      padding: 20px;
+      background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(100%, rgba(0, 0, 0, 0)));
+      background-image: -webkit-linear-gradient(#000000, rgba(0, 0, 0, 0));
+      background-image: -moz-linear-gradient(#000000, rgba(0, 0, 0, 0));
+      background-image: -o-linear-gradient(#000000, rgba(0, 0, 0, 0));
+      background-image: linear-gradient(#000000, rgba(0, 0, 0, 0));
+      height: 125px; }
+      /* line 23, ../sass/circles.scss */
+      #circles #header #header-text h5 {
+        float: right;
+        font-family: 'Cabin Condensed', sans-serif;
+        font-weight: 700;
+        font-size: 2.25em;
+        line-height: 1.33333em;
+        color: white; }
+    /* line 31, ../sass/circles.scss */
+    #circles #header #header-title {
+      color: white;
+      text-align: left;
+      position: absolute;
+      width: 100%;
+      bottom: 0px;
+      padding-left: 20px; }
+      /* line 38, ../sass/circles.scss */
+      #circles #header #header-title h1 {
+        font-family: 'Cabin', sans-serif;
+        font-size: 3em;
+        line-height: 1.5em;
+        font-weight: 800;
+        text-shadow: rgba(0, 0, 0, 0.6) 1px 1px 3px;
+        float: left; }
+      /* line 45, ../sass/circles.scss */
+      #circles #header #header-title h2 {
+        position: relative;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 600;
+        background-color: white;
+        color: black;
+        font-size: 2.25em;
+        line-height: 1.33333em;
+        margin-top: 10px;
+        margin-right: 20px;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
+        -moz-box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
+        box-shadow: rgba(0, 0, 0, 0.6) 1px 1px 2px;
+        float: right;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+        border-radius: 4px; }
+        /* line 57, ../sass/circles.scss */
+        #circles #header #header-title h2 .line {
+          z-index: 20;
+          top: 23px;
+          position: absolute;
+          height: 2px;
+          width: 100%;
+          background-color: grey;
+          border-bottom: 1px solid #D6D6D6; }
+      /* line 67, ../sass/circles.scss */
+      #circles #header #header-title h3 {
+        font-size: 1.5em;
+        line-height: 2em;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 600;
+        text-shadow: rgba(0, 0, 0, 0.2) 1px 1px 0;
+        clear: both;
+        line-height: 1.5em;
+        margin-bottom: 10px; }
+  /* line 82, ../sass/circles.scss */
+  #circles #introduction > li {
+    margin: 2% 5%;
+    font-family: 'Source Sans Pro', sans-serif;
+    width: 40%;
+    float: left;
+    padding: 2%; }
+    /* line 88, ../sass/circles.scss */
+    #circles #introduction > li h1 {
+      font-size: 3em;
+      line-height: 1.5em;
+      padding-bottom: 0.3em;
+      color: #333;
+      font-weight: 300; }
+    /* line 94, ../sass/circles.scss */
+    #circles #introduction > li p {
+      color: #333;
+      font-size: 1.125em;
+      line-height: 1.33333em; }
+    /* line 98, ../sass/circles.scss */
+    #circles #introduction > li i {
+      padding-right: 10px; }
+    /* line 105, ../sass/circles.scss */
+    #circles #introduction > li li {
+      margin-bottom: 15px; }
+      /* line 107, ../sass/circles.scss */
+      #circles #introduction > li li:last-child {
+        margin-bottom: none; }
+  /* line 111, ../sass/circles.scss */
+  #circles #create {
+    width: 100%;
+    height: 250px;
+    background-color: white;
+    border: 1px 0px solid black; }
+    /* line 116, ../sass/circles.scss */
+    #circles #create #record {
+      color: white;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -o-border-radius: 50%;
+      border-radius: 50%;
+      background-color: #F7585C;
+      width: 30px;
+      text-align: center;
+      font-size: 1.7em;
+      height: 4em;
+      width: 4em; }
+      /* line 125, ../sass/circles.scss */
+      #circles #create #record i {
+        display: block;
+        padding-top: .2em; }

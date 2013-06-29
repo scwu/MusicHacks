@@ -1,0 +1,180 @@
+
+@import "compass/css3/text-shadow";
+@import "compass/css3/box-shadow";
+@import "compass/css3";
+
+#circles {
+border-top: 3px solid #F7585C;
+@import "compass/typography/vertical_rhythm";
+@include establish-baseline;
+	margin: 0px auto;
+
+	#header {
+		position: relative;
+		text-align: center;
+		background-image: url('/media/img/kiss.jpg');
+		@include background-size('cover');
+		height: 300px;
+		#header-text {
+			@include text-shadow(rgba(black, 0.2) 1px 1px 0);
+		padding: 20px;
+			@include background-image(linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0)));
+			height: 125px;
+			h5 {
+				float: right;
+				font-family: 'Cabin Condensed', sans-serif;
+				font-weight: 700;
+				@include adjust-font-size-to(36px);
+				color: white;
+			}
+		}
+		#header-title {
+			color: white;
+			text-align: left;
+			position: absolute;
+			width: 100%;
+			bottom: 0px;
+			padding-left: 20px;
+			h1 {
+				font-family: 'Cabin', sans-serif;
+				@include adjust-font-size-to(48px);
+				font-weight: 800;
+				@include text-shadow(rgba(black, .6) 1px 1px 3px);
+				float: left;
+			}
+			h2 { 
+				position: relative;
+				font-family: 'Source Sans Pro', sans-serif;
+				font-weight: 600;
+				@include adjust-font-size-to(36px);
+				background-color: white;
+				color: black;
+				margin-top: 10px;
+				margin-right: 20px;
+				@include box-shadow(rgba(black, .6) 1px 1px 2px);
+				float: right;
+				@include border-radius(4px);
+				.line {
+					z-index: 20;
+					top: 23px;
+					position: absolute;
+					height: 2px;
+					width: 100%;
+					background-color: grey;
+					border-bottom: 1px solid #D6D6D6;
+				}
+			}
+			h3 {
+				@include adjust-font-size-to(24px);
+				font-family: 'Source Sans Pro', sans-serif;
+				font-weight: 600;
+				@include text-shadow(rgba(black, 0.2) 1px 1px 0);
+				clear: both;
+				line-height: 1.5em;
+				margin-bottom: 10px;
+			}
+  		}
+	}
+
+	#introduction {
+		> li:first-child {
+		}
+		> li {
+			margin: 2% 5%;
+			font-family: 'Source Sans Pro', sans-serif;
+			width: 40%; 
+			float: left;
+			padding: 2%;
+			h1 {
+				@include adjust-font-size-to(48px);
+				@include padding-trailer(.2);
+				color: #333;
+				font-weight: 300;
+			}
+			p {
+				color: #333;
+				@include adjust-font-size-to(18px);
+			}
+			i {
+				padding-right: 10px;
+			}
+			li:first-child {
+				p {
+				}
+			}
+			li {
+				margin-bottom: 15px;
+				&:last-child { margin-bottom: none; }
+			}
+		}
+	}
+	#create{
+		width: 100%;
+		height: 175px;
+		background-color: white;
+		padding: 30px;
+		text-align: center;
+		.record {
+			padding-top: 6px;
+			margin: 0px auto;
+			color: white;
+			background-color: #F7585C;
+			border: 1px solid darken(#F7585C, 30%);
+			text-align: left;
+			font-size: 1.7em;
+			height: 4em;
+			width: 12em;
+			display: inline-block;
+				padding-left: 25px;
+			i {
+				font-size: 2.5em;
+				padding-top: 10px;
+				display: table-cell;
+				vertical-align: middle;			
+			}
+			span {
+				display: table-cell;
+				vertical-align: middle;		
+				width: 100%;
+				text-align: center;
+				line-height: 4em;
+				font-family: 'Source Sans Pro', sans-serif;
+				font-weight: 300;
+				@include adjust-font-size-to(44px);
+
+			}
+		}
+		.upload {
+			padding-top: 6px;
+			margin-left: 20px;
+			color: white;
+			background-color: #7897B3;
+			border: 1px solid darken(#7897B3, 30%);
+			text-align: left;
+			font-size: 1.7em;
+			height: 4em;
+			width: 12em;
+			display: inline-block;
+				padding-left: 18px;
+			i {
+				font-size: 2.5em;
+				padding-top: 10px;
+				display: table-cell;
+				vertical-align: middle;			
+			}
+			span {
+				display: table-cell;
+				vertical-align: middle;		
+				width: 100%;
+				text-align: center;
+				line-height: 4em;
+				font-family: 'Source Sans Pro', sans-serif;
+				font-weight: 300;
+				@include adjust-font-size-to(40px);
+
+			}
+		}
+	}
+
+
+}

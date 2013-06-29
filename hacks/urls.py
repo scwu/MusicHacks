@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^redirect/', 'hacks.app.views.private'),
     url(r'^circle/(?P<circle_id>\d+)/song/$', 'hacks.app.views.add_song'),
     url(r'^circle/(?P<circle_id>\d+)/$', 'hacks.app.views.circle'),
+    url(r'^circle/', 'hacks.app.views.jeremy'),
     # Examples:
     # url(r'^$', 'hacks.views.home', name='home'),
     # url(r'^hacks/', include('hacks.foo.urls')),
