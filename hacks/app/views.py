@@ -90,6 +90,9 @@ def home(request):
     circles = Circle.objects.all().values()
     return render_to_response('index.html', {'circles':circles}, RequestContext(request))
 
+def record(request):
+    return render_to_response('record.html', RequestContext(request))
+
 @require_http_methods(["POST"])
 def action(request):
     return HttpResponse("Success")
