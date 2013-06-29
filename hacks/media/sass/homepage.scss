@@ -118,9 +118,11 @@ html {
 		background-size:cover;
 		background-position:center center;
 		color:#fff;
+		border-top:5px solid #F8D734;
 	}
 
 	.room-title {
+		font-family:'Cabin';
 		font-weight:bold;
 		padding:12px;
 		background-color:rgba(0,0,0,.6);
@@ -138,6 +140,18 @@ html {
 		position:absolute;
 		bottom:20px;
 		right:20px;
+	}
+
+	.join:hover {
+		opacity:.75;
+	}
+
+	.stream-header {
+		font-size:28px;
+		font-family:'source sans pro';
+		font-weight:bold;
+		padding:10px;
+		margin-top:40px;
 	}
 
 }

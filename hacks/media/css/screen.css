@@ -158,13 +158,15 @@ html {
   height: 320px;
   background-size: cover;
   background-position: center center;
-  color: #fff; }
-/* line 123, ../sass/homepage.scss */
+  color: #fff;
+  border-top: 5px solid #F8D734; }
+/* line 124, ../sass/homepage.scss */
 #homepage .room-title {
+  font-family: 'Cabin';
   font-weight: bold;
   padding: 12px;
   background-color: rgba(0, 0, 0, 0.6); }
-/* line 129, ../sass/homepage.scss */
+/* line 131, ../sass/homepage.scss */
 #homepage .join {
   float: right;
   background-color: #F7585C;
@@ -177,6 +179,16 @@ html {
   position: absolute;
   bottom: 20px;
   right: 20px; }
+/* line 145, ../sass/homepage.scss */
+#homepage .join:hover {
+  opacity: .75; }
+/* line 149, ../sass/homepage.scss */
+#homepage .stream-header {
+  font-size: 28px;
+  font-family: 'source sans pro';
+  font-weight: bold;
+  padding: 10px;
+  margin-top: 40px; }
 
 /* line 6, ../sass/screen.scss */
 * {
