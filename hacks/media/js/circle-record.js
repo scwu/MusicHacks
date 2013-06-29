@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-  	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-  	<title>Recorder and Connect With SoundCloud</title>
-    <link rel="stylesheet" type="text/css" href="example.css" />
-  </head>
-  <body>
+var circleUrl = document.URL;
+console.log(circleUrl);
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-    <script type="text/javascript" src="/media/recorder.js/recorder.js"></script>
-    <script>
       function timecode(ms) {
         var hms = {
           h: Math.floor(ms/(60*60*1000)),
@@ -36,7 +27,7 @@
             //alert("recording starts now. press stop when youre done. and then play or upload if you want.");
           },
           progress: function(milliseconds){
-            document.getElementById("time").innerHTML = timecode(milliseconds);
+            //document.getElementById("time").innerHTML = timecode(milliseconds);
           }
         });
       }
@@ -45,7 +36,7 @@
         Recorder.stop();
         Recorder.play({
           progress: function(milliseconds){
-            document.getElementById("time").innerHTML = timecode(milliseconds);
+            //document.getElementById("time").innerHTML = timecode(milliseconds);
           }
         });
       }
@@ -57,7 +48,7 @@
       function upload(){
         SC.connect({
           client_id: "aHT5HITYm8vlkWNabL0Qg",
-          redirect_uri: "",
+          redirect_uri: circleUrl,
           connected: function(){
             Recorder.upload({
               url:        "https://api.soundcloud.com/tracks.json?oauth_token=" + SC.options.access_token,
@@ -77,17 +68,3 @@
           }
         })
       }
-  </script>
-  
-    <div id="wrapper">
-        <div>
-          <a href="javascript:record()"  id="record"                       >Record</a>
-          <a href="javascript:play()"    id="play"   >Play</a> 
-          <a href="javascript:stop()"    id="stop"   >Stop</a>
-          <a href="javascript:upload()"  id="upload" >Upload to SoundCloud</a>
-        </div>
-        
-        <span id="time">0:00</span>
-    </div>
-  </body>
-</html>

@@ -31,8 +31,16 @@
 
 		u {
 			text-decoration: none;
-			font-size: 41px;
 			font-weight: bold;
+		}
+
+		.header-text {
+			display:block;
+			width:480px;
+			margin:20px auto;
+			font-size:32px;
+			font-family:'Cabin';
+			font-weight:normal;
 		}
 	}
 
@@ -153,4 +161,63 @@
 		margin-top:40px;
 	}
 
+	.bieber {
+		float:left;
+		margin-left:5px;
+	}
+
+}
+
+.create-circle {
+	border-top:4px solid #F7585C;
+
+	* {
+		font-family:'Cabin';
+		color:darken(#F7585C, 50%);
+	}
+
+	h1 {
+		font-size:24px;
+		font-weight:bold;
+		margin-bottom:20px;
+	}
+
+	.container {
+		width:960px;
+		margin:0 auto;
+		padding-top:20px;
+	}
+
+	label {
+		display:block;
+		margin-top:20px;
+		font-size:16px;
+		font-weight:bold;
+	}
+
+	input, textarea, select, option {
+		border:1px solid lighten(#F7585C, 20%);
+	}
+
+	input[type="submit"] {
+		background-color:#F7585C;
+		padding:10px 20px;
+		border:none;
+		color:#fff;
+		font-size:24px;
+		margin-top:20px;
+		font-weight:bold;
+		cursor:pointer;
+	}
+
+	h5 {
+		float: right;
+		font-family: 'Cabin Condensed', sans-serif;
+		font-weight: 700;
+		font-size: 2.25em;
+		line-height: 1.33333em;
+		color: #F7585C;
+		margin-right:20px;
+		margin-top:20px;
+	}
 }

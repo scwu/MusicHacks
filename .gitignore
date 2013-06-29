@@ -2,3 +2,4 @@
 venv
 .sass-cache
 *.css
+migrations/

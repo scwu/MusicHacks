@@ -128,6 +128,14 @@ def jeremy(request):
 def record(request):
     return render_to_response('record.html', RequestContext(request))
 
+@login_required
+def join_circle(request, circle_id):
+    c = get_object_or_404(Circle, pk=circle_id)
+    user = User.objects.get(username=request.user.username)
+    c.users.add(user)
+    c.save()
+    return HttpResponseRedirect('/circle/%d' % (circle.id))
+
 
 @require_http_methods(["POST"])
 def action(request):

@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 {% block extra_head %}
+<script type="text/javascript" src="http://connect.soundcloud.com/2/latest.min.js"></script>
+<script type="text/javascript" src="/media/recorder.js/recorder.js"></script>
+<script type="text/javascript" src="/media/js/circle.js"></script>
+ 
 <script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
 <script type="text/javascript" src="/media/js/circle-recorder.js"></script>
 <script type="text/javascript" src="/media/js/circle.js"></script>
@@ -76,27 +80,19 @@
 		</li>
 	</ul>
 	<div id="create">
+		<h1>Express Yourself</h1>
+		<!--  <span id="time">0:00</span> -->
 			<div class="record" id="record-button">
 					<i class="icon-microphone"></i>
 					<span>record</span>
 			</div>
-			<div class="upload">
+			<div class="upload" id="upload-button">
 					<i class="icon-cloud-upload"></i>
 					<span>upload</span>
 			</div>
 	</div>
 
 
-    <div id="wrapper">
-        <div>
-          <a href="javascript:record()"  id="record"                       >Record</a>
-          <a href="javascript:play()"    id="play"   >Play</a> 
-          <a href="javascript:stop()"    id="stop"   >Stop</a>
-          <a href="javascript:upload()"  id="upload" >Upload to SoundCloud</a>
-        </div>
-        
-        <span id="time">0:00</span>
-    </div>
 
    <form enctype="multipart/form-data" action="song/" method="post">{% csrf_token %}
 {{ form.as_p }}
@@ -116,4 +112,6 @@
 
 
 </div>
+
+<script type="text/javascript" src="/media/js/circle-record.js"></script>
 {% endblock content %}
