@@ -1,3 +1,4 @@
+import sys, os
 # Django settings for hacks project.
 
 DEBUG = True
@@ -93,7 +94,6 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
     "django.core.context_processors.static",
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.request",
-    "social_auth.context_processors.social_auth_by_type_backends",
     )
 
 MIDDLEWARE_CLASSES = (
@@ -125,11 +125,6 @@ INSTALLED_APPS = (
     'django.contrib.admin', #HP enabled it
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs', #HP enabled it
-
-    #HP -- South is a great database migration tool.
-    # Trust us, you'll need it if you're using a relational database like sqlite, MYSQL, POSTGRES
-    # install south with `pip install south` (it comes pre-installed on pythonanywhere)
-    # If you're not using a relational database, you can comment this out.
     'hacks.app',
 )
 
