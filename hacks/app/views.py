@@ -87,7 +87,9 @@ def create_circle(request):
 def home(request):
     return render_to_response('index.html', RequestContext(request))
 
-
+def jeremy(request):
+    return render_to_response('circle.html', RequestContext(request))
+    
 @require_http_methods(["POST"])
 def action(request):
     return HttpResponse("Success")

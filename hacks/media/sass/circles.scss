@@ -1,3 +1,8 @@
+
+@import "compass/css3/text-shadow";
+@import "compass/css3/box-shadow";
+@import "compass/css3";
+
 #circles {
 border-top: 3px solid #F7585C;
 @import "compass/typography/vertical_rhythm";
@@ -41,9 +46,9 @@ border-top: 3px solid #F7585C;
 				position: relative;
 				font-family: 'Source Sans Pro', sans-serif;
 				font-weight: 600;
+				@include adjust-font-size-to(36px);
 				background-color: white;
 				color: black;
-				@include adjust-font-size-to(36px);
 				margin-top: 10px;
 				margin-right: 20px;
 				@include box-shadow(rgba(black, .6) 1px 1px 2px);
@@ -70,6 +75,7 @@ border-top: 3px solid #F7585C;
 			}
   		}
 	}
+
 	#introduction {
 		> li:first-child {
 		}
@@ -102,5 +108,73 @@ border-top: 3px solid #F7585C;
 			}
 		}
 	}
+	#create{
+		width: 100%;
+		height: 175px;
+		background-color: white;
+		padding: 30px;
+		text-align: center;
+		.record {
+			padding-top: 6px;
+			margin: 0px auto;
+			color: white;
+			background-color: #F7585C;
+			border: 1px solid darken(#F7585C, 30%);
+			text-align: left;
+			font-size: 1.7em;
+			height: 4em;
+			width: 12em;
+			display: inline-block;
+				padding-left: 25px;
+			i {
+				font-size: 2.5em;
+				padding-top: 10px;
+				display: table-cell;
+				vertical-align: middle;			
+			}
+			span {
+				display: table-cell;
+				vertical-align: middle;		
+				width: 100%;
+				text-align: center;
+				line-height: 4em;
+				font-family: 'Source Sans Pro', sans-serif;
+				font-weight: 300;
+				@include adjust-font-size-to(44px);
+
+			}
+		}
+		.upload {
+			padding-top: 6px;
+			margin-left: 20px;
+			color: white;
+			background-color: #7897B3;
+			border: 1px solid darken(#7897B3, 30%);
+			text-align: left;
+			font-size: 1.7em;
+			height: 4em;
+			width: 12em;
+			display: inline-block;
+				padding-left: 18px;
+			i {
+				font-size: 2.5em;
+				padding-top: 10px;
+				display: table-cell;
+				vertical-align: middle;			
+			}
+			span {
+				display: table-cell;
+				vertical-align: middle;		
+				width: 100%;
+				text-align: center;
+				line-height: 4em;
+				font-family: 'Source Sans Pro', sans-serif;
+				font-weight: 300;
+				@include adjust-font-size-to(40px);
+
+			}
+		}
+	}
+
 
 }

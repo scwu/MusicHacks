@@ -1,5 +1,6 @@
 @import "compass/css3";
 @import "compass/css3/text-shadow";
+@import "compass/css3/box-shadow";
 @import "compass/reset";
 @import "cf";
 @import "font-awesome/font-awesome";
@@ -11,7 +12,8 @@
 }
 
 html { 
-	-webkit-font-smoothing: antialiased; 
+	-webkit-font-smoothing: antialiased;
+	background-color: lighten(#D6D6D6, 10%);
 }
 
 a, a:link {
