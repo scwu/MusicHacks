@@ -36,24 +36,25 @@ def add_song(request, circle_id):
             file = request.FILES['file']
             client = soundcloud.Client(
                 access_token=request.session.get('access_token'))
-            def on_save():
-                c = get_object_or_404(Circle, circle_id)
-                song = Song.objects.create (
-                    user=request.user,
-                    title=request.title,
-                    description=request.description,
-                    circle=c,
-                    genre=request.genre)
-                song.save()
             ext = os.path.splitext(file.name)[1]
-            destination = open('%s/tmp%s'%(MEDIA_ROOT, ext), 'wb+')
+            desc = '%s/tmp%s'%(MEDIA_ROOT, ext)
+            destination = open(desc, 'wb')
             for chunk in file.chunks():
                 destination.write(chunk)
             destination.close()
-            track = client.post('/tracks', on_save, track={
+            track = client.post('/tracks', track={
                 'title': form.cleaned_data['title'],
-                'asset_data': open('%s/tmp%s'%(MEDIA_ROOT, ext), 'rb+')
+                'asset_data': open(desc, 'rb')
             })
+            c = get_object_or_404(Circle, pk=circle_id)
+            song = Song.objects.create (
+                user=request.user,
+                title=form.cleaned_data['title'],
+                description=form.cleaned_data['description'],
+                url=track.permalink_url,
+                circle=c,
+                genre=form.cleaned_data['genre'])
+            song.save()
             print track.permalink_url
             return HttpResponseRedirect('/class')
     return HttpResponseNotFound('No page')
@@ -107,7 +108,7 @@ def private(request):
     #client_user = soundcloud.Client(access_token=access_token)
     print "got here"
     current_user = client.get('/me')
-    request.session['access_token'] = access_token
+    request.session['access_token'] = access_token.access_token
     if User.objects.filter(username=current_user.username):
         user = User.objects.get(username=current_user.username)
         user_auth = auth.authenticate(username=user.username, password='pwd')
