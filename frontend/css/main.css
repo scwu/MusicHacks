@@ -11,8 +11,7 @@ html {
 }
 
 body {
-	width: 100%;
-	height: 100%;
+	overflow:hidden;
 }
 
 .header {
@@ -65,22 +64,35 @@ body {
 
 .video {
 	position:absolute;
-	left:0;
+	left:-25%;
 	top:0;
 	bottom:0;
-	right:0;
 	z-index:0;
+	width:150%;
 }
 
-#search {
+.search {
 	position: absolute;
-	left: 0;
-	bottom: 0;
+	right: 20px;
+	bottom: 20px;
+	width:240px;
+	border-radius:20px;
+	padding:10px;
+	border:0px;
 }
 
-#create {
+.create {
 	position: absolute;
-	right: 0;
-	bottom: 0;
-	width:100%;
+	left: 20px;
+	bottom: 20px;
+	width:320px;
+	padding:15px 20px;
+	text-align:center;
+	font-family:'Cabin';
+	font-weight:700;
+	font-size:36px;
+	background-color:#F7585C;
+	border-radius:5px;
+	border:none;
+	color:#fff;
 }

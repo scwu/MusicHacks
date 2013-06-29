@@ -1,4 +1,4 @@
-/* line 17, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../Downloads/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -19,47 +19,118 @@ time, mark, audio, video {
   font-size: 100%;
   vertical-align: baseline; }
 
-/* line 22, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../Downloads/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1; }
 
-/* line 24, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../Downloads/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none; }
 
-/* line 26, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../Downloads/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-/* line 28, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../Downloads/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle; }
 
-/* line 30, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../Downloads/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none; }
-  /* line 103, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+  /* line 103, ../../../../../Downloads/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
   q:before, q:after, blockquote:before, blockquote:after {
     content: "";
     content: none; }
 
-/* line 32, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../Downloads/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none; }
 
-/* line 116, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../Downloads/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block; }
 
-/* line 5, ../sass/screen.scss */
+/* line 3, ../sass/homepage.scss */
+#homepage .header {
+  font-family: 'Cabin Condensed';
+  font-weight: 700;
+  font-size: 124px;
+  color: #fff;
+  text-align: center;
+  height: 200px;
+  width: 800px;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  margin-left: -400px;
+  margin-top: -100px;
+  position: absolute; }
+/* line 23, ../sass/homepage.scss */
+#homepage .header p {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  font-size: 36px; }
+/* line 28, ../sass/homepage.scss */
+#homepage .header u {
+  text-decoration: none;
+  font-size: 41px;
+  font-weight: 800; }
+/* line 34, ../sass/homepage.scss */
+#homepage .wrapper {
+  width: 960px;
+  margin: 0 auto;
+  font-family: 'Cabin'; }
+/* line 40, ../sass/homepage.scss */
+#homepage .front {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%; }
+/* line 50, ../sass/homepage.scss */
+#homepage .video {
+  position: absolute;
+  left: -25%;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 150%; }
+/* line 59, ../sass/homepage.scss */
+#homepage .search {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 240px;
+  border-radius: 20px;
+  padding: 10px;
+  border: 0px; }
+/* line 69, ../sass/homepage.scss */
+#homepage .create {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  width: 320px;
+  padding: 15px 20px;
+  text-align: center;
+  font-family: 'Cabin';
+  font-weight: 700;
+  font-size: 36px;
+  background-color: #F7585C;
+  border-radius: 5px;
+  border: none;
+  color: #fff; }
+
+/* line 6, ../sass/screen.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 7, ../sass/screen.scss */
+/* line 8, ../sass/screen.scss */
 html {
   -webkit-font-smoothing: antialiased; }
