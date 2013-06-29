@@ -18,6 +18,9 @@ class Genre(models.Model):
   name = models.CharField(max_length=63)
   image = models.URLField()
 
+  def __unicode__(self):
+    return self.name
+
 class Song(models.Model):
   time = models.TimeField(auto_now_add=True)
   user = models.ForeignKey(User, related_name='song_user')
