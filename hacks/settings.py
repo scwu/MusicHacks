@@ -120,14 +120,28 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'south',
 
     # Uncomment the next line to enable the admin:
     'django.contrib.admin', #HP enabled it
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs', #HP enabled it
+    'south',
     'hacks.app',
+    #'social_auth',
 )
+
+AUTHENTICATION_BACKENDS = (
+    #'social_auth.backends.contrib.soundcloud.SoundcloudBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+#SOCIAL_AUTH_ENABLED_BACKENDS = ('soundcloud')
+
+LOGIN_URL          = '/login/'
+LOGIN_REDIRECT_URL = '/circle/'
+
+SOUNDCLOUD_CLIENT_ID = '0a12c93543fbf8de3cba545b5c16bd64'
+SOUNDCLOUD_CLIENT_SECRET = '5dcac4b7f8d57485150f829a25104028'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

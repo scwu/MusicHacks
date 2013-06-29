@@ -22,6 +22,7 @@ from .forms import UploadFileForm
 from datetime import datetime
 import hacks.urls
 import json
+import soundcloud
 
 import soundcloud
 
@@ -67,9 +68,38 @@ def create_circle(request):
     return render_to_response('create_circle.html')
 
 def home(request):
-    return render_to_response('circle.html', RequestContext(request))
+    return render_to_response('index.html', RequestContext(request))
 
 
 @require_http_methods(["POST"])
 def action(request):
     return HttpResponse("Success")
+
+def login(request):
+    client = soundcloud.Client(client_id='0a12c93543fbf8de3cba545b5c16bd64',
+                             client_secret='5dcac4b7f8d57485150f829a25104028',
+                             redirect_uri='http://127.0.0.1:8000/circle/')
+    return redirect(client.authorize_url())
+
+def private(request):
+    client = soundcloud.Client(client_id='0a12c93543fbf8de3cba545b5c16bd64',
+                            client_secret='5dcac4b7f8d57485150f829a25104028',
+                            redirect_uri='http://127.0.0.1:8000/circle/')
+    code = request.GET['code']
+    access_token = client.exchange_token(code)
+    #client_user = soundcloud.Client(access_token=access_token)
+    print "got here"
+    current_user = client.get('/me')
+    request.session['access_token'] = access_token
+    if User.objects.filter(username=current_user.username):
+        user = User.objects.get(username=current_user.username)
+        user_auth = auth.authenticate(username=user.username, password='pwd')
+        auth.login(request, user_auth)
+    else:
+        user = User(username=current_user.username)
+        user.set_password('pwd')
+        user.save()
+        user_auth = auth.authenticate(username=user.username, password='pwd')
+        auth.login(request, user_auth)
+    return HttpResponseRedirect('/')
+
